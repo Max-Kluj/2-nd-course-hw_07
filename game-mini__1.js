@@ -1,61 +1,54 @@
-const quiz = [
-           {
-               question: "Какой цвет небо?",
-               options: ["1. Красный", "2. Синий", "3. Зеленый"],
-               correctAnswer: 2 // номер правильного ответа
-           },
-           {
-               question: "Сколько дней в неделе?",
-               options: ["1. Шесть", "2. Семь", "3. Восемь"],
-               correctAnswer: 2
-           },
-           {
-               question: "Сколько у человека пальцев на одной руке?",
-               options: ["1. Четыре", "2. Пять", "3. Шесть"],
-               correctAnswer: 2
-           }
-       ];
+function guessNumber() {
 
-function startQuiz() {
+let numRandom = Math.floor(Math.random() * 100 + 1);
 
-let sumResult = 0
+let numberOfAttempts = 0;
 
-for (let i = 0; i < quiz.length; i++) {
+let numUser;
 
-    while(true){
-        const answer = prompt(`${quiz[i].question}
-Выберете номер ответа: ${quiz[i].options.join(' ')}`);
-    
-        if (answer === null) {
+let numUserN;
+
+
+//     
+
+
+while (true){
+        numUser = prompt('Введите число от 0 до 100');
+
+        if (numUser === null) {
             alert('Вы нажали Отмена');
             return;
         }
 
-        if (answer.trim() === '') {
-            alert('Вы ввели не правильное значение, поэтому ответ не засчитан.');
+        if (numUser.trim() === '') {
+            alert('Вы ввели не правильное значение, введите цифру от 0 до 100.');
             continue;
         }
 
-        if (isNaN(answer)) {
-            alert('Вы ввели не цифру, поэтому ответ не засчитан.');
+        numUserN = Number(numUser);
+        
+        if (isNaN(numUserN)) {
+            alert('Вы ввели не цифру, введите цифру от 0 до 100.');
             continue;
         }
 
-        const num = Number(answer);
-
-        if (num < 1 || num > quiz[i].options.length) {
-            alert(`Такого варианта нет. Введите цифру от 1 до ${quiz[i].options.length}`);
+        if (numUserN < 1 || numUserN > 100) {
+            alert(`Такого варианта нет. Введите цифру от 1 до 100`);
             continue;
         }
 
-        if (num === quiz[i].correctAnswer) {
-            sumResult++;
-        }
+        numberOfAttempts++;
 
-        break;
+        if (numUserN > numRandom) {
+            alert('Загаданное число меньше');
+        } else if (numUserN < numRandom) {
+            alert('Загаданное число больше');
+        } else if(numUserN === numRandom) {
+            alert(`Вы угадали! Попыток: ${numberOfAttempts}.`);
+            break;
+        }
+   
     }
-}
-
-alert(`Правильных ответов: ${sumResult} из 3-х`);
 
 }
+
