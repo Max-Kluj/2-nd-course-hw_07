@@ -143,15 +143,23 @@ button8.addEventListener('click', function() {
 const button9 = document.getElementById('exercise-9');
 button9.addEventListener('click', function() {
 
+    // const currentDate = new Date();
+
+    // const day73 = 73 * 24 * 60 * 60 * 1000;
+
+    // const milliseconds = (+currentDate);
+
+    // const newDate = new Date(day73 + milliseconds).toLocaleDateString('ru-RU');
+
+    // console.log(newDate);
+
     const currentDate = new Date();
 
-    const day73 = 73 * 24 * 60 * 60 * 1000;
+    console.log(currentDate.getDate());
+    
+    currentDate.setDate(currentDate.getDate() + 73);
 
-    const milliseconds = (+currentDate);
-
-    const newDate = new Date(day73 + milliseconds).toLocaleDateString('ru-RU');
-
-    console.log(newDate);
+    console.log(currentDate.toLocaleDateString('ru-RU'));
 
 });
 
