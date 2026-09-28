@@ -11,7 +11,7 @@ const operator = ['+', '-', '*', '/'];
 
 while (true){
 
-        const oper = operator[Math.floor(Math.random() * operator.length)];    
+        const oper = operator[Math.round(Math.random() * operator.length)];    
         
         if (oper === '/') {
             correctAnswer = Math.floor(Math.random() * 10) + 1;
